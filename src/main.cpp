@@ -1089,16 +1089,10 @@ int static generateMTRandom(unsigned int s, int range)
 
 int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
 {
-    int64 nSubsidy = 50 * COIN;
+    int64 nSubsidy = 1 * COIN;
 
 	if (nHeight == 1)
 		return 1000000000 * COIN;
-	
-	// Subsidy halving
-    nSubsidy >>= (nHeight / 41000000);
-	
-	if (nHeight > 64*100000)
-		return nFees;
     
     return nSubsidy + nFees;
 }
@@ -1169,7 +1163,7 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockH
     }
 
     CBigNum bnNew(PastDifficultyAverage);
-
+	
     int64_t _nTargetTimespan = CountBlocks*nTargetSpacing;
 
     if (nActualTimespan < _nTargetTimespan/3)
@@ -3065,7 +3059,7 @@ bool static AlreadyHave(const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment. pchmess0agestart
-unsigned char pchMessageStart[4] = { 0xd2, 0xca, 0xaf, 0xeb };
+unsigned char pchMessageStart[4] = { 0xc2, 0xca, 0xaf, 0xe3 };
 
 
 void static ProcessGetData(CNode* pfrom)

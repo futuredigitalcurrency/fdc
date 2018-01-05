@@ -1039,7 +1039,7 @@ boost::filesystem::path GetDefaultDataDir()
     // Unix: ~/.bitcoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "futuredigitalcurrencydata";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "futuredigitalcurrencynew";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1051,10 +1051,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "futuredigitalcurrencydata";
+    return pathRet / "futuredigitalcurrencynew";
 #else
     // Unix
-    return pathRet / ".futuredigitalcurrencydata";
+    return pathRet / ".futuredigitalcurrencynew";
 #endif
 #endif
 }
